@@ -1,30 +1,44 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+[coursewebsite]: https://react2025.com/
+[coursedocumentation]: https://docs.react2025.com/
+[jamstackdocumentation]: https://jamstack.org/
 
-## Getting Started
+### React 2025
 
-First, run the development server:
+### Course: **Modern Applications with the Jamstack**
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+<br />
+<img src='https://react2025.com/logo.svg' id='thumbnail' width='15%' height='15%' />
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Sections in this Readme 📓
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+- [React 2025 Course's Website][coursewebsite]
+- [The Process](#process)
+- [Course Notes](#notes)
+- [Documentation](#documentation)
 
-## Learn More
+### <a id='process'></a>The Process ⚙️
 
-To learn more about Next.js, take a look at the following resources:
+- Vercel _(deploy right away the site)_
+  - New project starting from a template:
+    - Choose Next.js and follow all instructions
+    - Deployed site: https://fastfeedback-one-zeta.vercel.app/ ☑️
+    - Purchase your domain and add your repo to it. You have almost instantly a production ready app!
+      - Sets up SSL
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### <a id='notes'></a>Course Notes 🧾
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- The stack for this project will be:
 
-## Deploy on Vercel
+  - Framework: **Next.js**
+  - Authentication: **Firebase**
+  - Database: **Firestore**
+  - Styling: **Chakra-UI**
+  - Deployment: **Vercel**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Chakra-UI
+  - Uses styled system under the hood. _(See [styled-system](https://styled-system.com/))_
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## <a id='documentation'></a>Documentation 🕶️
+
+- [React 2025 Course Documentation][coursedocumentation]
+- [JAMstack Documentation][jamstackdocumentation]
