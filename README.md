@@ -64,7 +64,7 @@
   - Create a file `/styles/theme.js` and add a custom theme.
   - Import the `<ThemeProvider theme={theme}>` tag and wrap the application udner `_app.js`.
 
-- Next.js
+- Next.js ✅
   - Create a `/pages/_document.js` **Custom Document** file to augment the application's HTML & body tages.
   - Add Absolute Imports & Aliases by creating a `/jsconfig.json` file. This will help to avoid having hyper-nested routs in the imports when the project gets big.
 
@@ -132,7 +132,4 @@
   ***
 - Useful links:
   - GitHub app's settings: https://github.com/settings/applications/1436151
-  - # Google APIs app's settings: https://console.developers.google.com/admin/settings?project=fast-feedback-demo-feb34
-  - Useful links:
-    - GitHub app's settings: https://github.com/settings/applications/1436151
-    - Google APIs app's settings: https://console.developers.google.com/admin/settings?project=fast-feedback-demo-feb34
+  - Google APIs app's settings: https://console.developers.google.com/admin/settings?project=fast-feedback-demo-feb34
