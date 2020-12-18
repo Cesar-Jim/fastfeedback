@@ -123,8 +123,8 @@
 - Firebase
   - Authentication with GitHub was a problem because Firebase provided the following authorization callback url: `https://.firebaseapp.com/__/auth/handler` for GitHub auth, which should be copied and pasted into the app's configuration in GitHub. Note that the `.` _(period)_ before the word `firebase` needs to be removed, otherwise, authentication was impossible. I spent several hours figuring this out.
     - Make sure to add the following authorized domains:
-      - `now.sh` required for preview deploys
-      - Production domain: `fastfeedback-one-zeta.vercel.app`
+    - `now.sh` required for preview deploys
+    - Production domain: `fastfeedback-one-zeta.vercel.app`
 - Vercel
   - Make sure to add environment variables for production and preview environments. Not required for local, as those are added in the `.env` file.
 - Chakra-UI
@@ -132,4 +132,7 @@
   ***
 - Useful links:
   - GitHub app's settings: https://github.com/settings/applications/1436151
-  - Google APIs app's settings: https://console.developers.google.com/admin/settings?project=fast-feedback-demo-feb34
+  - # Google APIs app's settings: https://console.developers.google.com/admin/settings?project=fast-feedback-demo-feb34
+  - Useful links:
+    - GitHub app's settings: https://github.com/settings/applications/1436151
+    - Google APIs app's settings: https://console.developers.google.com/admin/settings?project=fast-feedback-demo-feb34
