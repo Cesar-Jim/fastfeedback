@@ -52,7 +52,8 @@
 
 - Configure & Setup Prettier ✅
 
-  - Create a `.prettierrc.js` file and include the right configuration
+  - Create a `.prettierrc.js` file and include the right configuration.
+  - Create a `.prettierignore` file and add .next & node_modules folders.
 
 - Firestore: Database Creation ✅
 
@@ -65,8 +66,21 @@
   - Import the `<ThemeProvider theme={theme}>` tag and wrap the application udner `_app.js`.
 
 - Next.js ✅
+
   - Create a `/pages/_document.js` **Custom Document** file to augment the application's HTML & body tages.
   - Add Absolute Imports & Aliases by creating a `/jsconfig.json` file. This will help to avoid having hyper-nested routs in the imports when the project gets big.
+
+- SVG ✅
+
+  - The SVG logo was initially compressed using [this SVG optimizer](https://jakearchibald.github.io/svgomg/).
+  - After optimization, create a new logo key inside of `styles/theme.js` and place the path along with the `wiebox` property.
+
+- [OpenChakra](https://openchakra.app/) Visual Editor ✅
+
+  - Great tool to get the initial layout code for the site.
+  - Just build every block, get the generated conde and add it to your app.
+
+- Form Validation with [React Hook Form](https://react-hook-form.com/)
 
 ### <a id='notes'></a>Course Notes 🧾
 
@@ -87,8 +101,8 @@
 - Domain Name, Design, and Data Fetching
   - The name should be easy to remember
   - Design Process:
-    - Use **Excalidraw** for low fidelity markups and wireframes
-    - Use **Figma** for high fidelity markups
+    - Use **Excalidraw** for low fidelity mockups and wireframes
+    - Use **Figma** for high fidelity mockups
     - Use **OpenChakra** to turn mockups into real React code with Chakra-UI.It is a visual editor.
 - Static Generation
   - Static pages are the base of JAMstack (JavaScript, APIs, & Markup)
