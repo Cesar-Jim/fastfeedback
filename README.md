@@ -80,7 +80,54 @@
   - Great tool to get the initial layout code for the site.
   - Just build every block, get the generated conde and add it to your app.
 
-- Form Validation with [React Hook Form](https://react-hook-form.com/)
+- Form using [React Hook Form](https://react-hook-form.com/) ⚠️
+
+  - There were some conflicts related to the version of `Chakra-UI` _(see lessons learned)_.
+
+- Toast Message Creation ✅
+
+  - A toast is a small message that shows up in a box and disappears on its own after a few seconds.
+  - Chakra-UI has a toast built into it that we can use
+
+- Hook up Firebase server-side ✅
+
+  - A **Service Account** is required
+  - Project Settings > Service Accounts, click on `Generate new private key`. This will create a `json` file that you need to download.
+  - Then run in the terminal `npm install firebase-admin`.
+  - Create a `/lib/firebase-admin.js` file
+
+- Make First API Route ⚠️
+
+  - Create an `api` folder inside of the `pages` folder
+  - Create a `/api/sites` file and add the following: _(note that req is not used, instead an `"_"` is placed for readability)\_
+
+  ```javascript
+  export default (_, res) => {
+    res.status(200).json({ name: 'Next.js' });
+  };
+  ```
+
+  - Now the route is ready to fetch some data.
+  - Make sure to wrap `FIREBASE_PRIVATE_KEY` with double quotes (" "), inside of the `.env` file.
+
+- Data Fetching with [SWR](https://swr.vercel.app/) ✅
+
+  - Run `npm install swr`
+  - For **Local Mutation** use the `mutate` function that comes with SWR:
+
+  ```javascript
+  mutate(
+    '/api/sites',
+    async (data) => {
+      return { sites: [...data.sites, newSite] };
+    },
+    false
+  );
+  ```
+
+- Date Formating with [date-fns](https://date-fns.org/) ✅
+
+  - Run `npm install date-fns`
 
 ### <a id='notes'></a>Course Notes 🧾
 
@@ -127,6 +174,12 @@
   - Use CSR with SWR if your data changes frequently
   - Mutate data using API routes
 
+- Data Fetching with SWR
+  - SWR is a package that offers React hooks for remote data fetching
+  - Components will get a stream of data updates constantly and automatically. And the UI will be always fast and reactive.
+  - One nice things is that the information updates in the background, so, if I navigate off the page, that information will stay up to date.
+  - It also allows to have `Local Mutation` (locally mutate cache)
+
 ## <a id='documentation'></a>Documentation 🕶️
 
 - [React 2025 Course Documentation][coursedocumentation]
@@ -142,8 +195,20 @@
 - Vercel
   - Make sure to add environment variables for production and preview environments. Not required for local, as those are added in the `.env` file.
 - Chakra-UI
-  - While attempting to install Chakra _(not the latest V1 version)_, I was getting a `dependency tree error`. The solution was to install the packages as the following example: `npm install --legacy-peer-deps --save @chakra-ui/core@0.8.0`
-  ***
+  - While attempting to install Chakra _(not the latest V1 version)_, I was getting a `dependency tree error`. The solution was to install the packages as the following example: `npm install --legacy-peer-deps --save @chakra-ui/core@0.8.0`.
+- React Hook Form
+
+  - There were some issues related to page scroll on IOS systems. Tho get around this issue I had to install `"body-scroll-lock": "^3.0.3",` and add the following code inside of `package.json`:
+
+  ```javascript
+  "resolutions": {
+    "body-scroll-lock": "3.0.3"
+  }
+  ```
+
+---
+
 - Useful links:
   - GitHub app's settings: https://github.com/settings/applications/1436151
   - Google APIs app's settings: https://console.developers.google.com/admin/settings?project=fast-feedback-demo-feb34
+  - Code Snippets: https://leerob.io/snippets

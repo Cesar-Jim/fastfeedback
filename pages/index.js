@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { Button, Text, Code, Icon, Flex } from '@chakra-ui/core';
+import { Button, Flex, Text, Code, Icon } from '@chakra-ui/core';
 
 import { useAuth } from '@/lib/auth';
 
@@ -17,11 +17,14 @@ const Home = () => {
       <Head>
         <title>Fast Feedback</title>
       </Head>
+
       <Icon color="black" name="logo" size="64px" />
       {auth.user ? (
-        <Button onClick={(e) => auth.signout()}>Sign Out</Button>
+        <Button as="a" href="/dashboard">
+          View Dashboard
+        </Button>
       ) : (
-        <Button mt={4} size="sm" onClick={(e) => auth.signinWithGithub()}>
+        <Button mt={4} size="sm" onClick={(e) => auth.signinWithGitHub()}>
           Sign In
         </Button>
       )}
