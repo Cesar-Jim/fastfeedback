@@ -12,12 +12,15 @@
     "@emotion/core": "^10.0.28",
     "@emotion/styled": "^10.0.27",
     "body-scroll-lock": "^3.0.3",
+    "date-fns": "^2.16.1",
     "emotion-theming": "^10.0.27",
     "firebase": "^8.2.0",
+    "firebase-admin": "^9.4.2",
     "next": "10.0.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "react-hook-form": "^6.13.1"
+    "react-hook-form": "^6.13.1",
+    "swr": "^0.3.10"
   },
   "resolutions": {
     "body-scroll-lock": "3.0.3"
