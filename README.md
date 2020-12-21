@@ -129,6 +129,11 @@
 
   - Run `npm install date-fns`
 
+- `getStaticProps()` Usage ✅
+
+  - For getting all the feedback from each of the sites `/pages/p/[siteId]`, Next,js will prerender the page at build time using the props returned by `getStaticProps`.
+  - If a page has dynamic routes and uses `getStaticProps`, it needs to define a list of paths that have to be rendered to HTML at build time. With `getStaticPaths`, Next,js will statically prerender all the paths specified by `getStaticPaths`.
+
 ### <a id='notes'></a>Course Notes 🧾
 
 - The stack for this project will be:
