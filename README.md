@@ -134,6 +134,54 @@
   - For getting all the feedback from each of the sites `/pages/p/[siteId]`, Next,js will prerender the page at build time using the props returned by `getStaticProps`.
   - If a page has dynamic routes and uses `getStaticProps`, it needs to define a list of paths that have to be rendered to HTML at build time. With `getStaticPaths`, Next,js will statically prerender all the paths specified by `getStaticPaths`.
 
+- API Routes Authentication - JSON Web Token ([JWT](https://jwt.io/)) ✅
+
+  - The main goal is to lock down the API routes and only show the sites for the given user that's logged in
+  - Also, redirect the user to the dashboard if he/she is already logged in
+  - If I go to the dashboard now, I would be able to see all the feedback for all the sites for all the users. So, start looking at the `/api/sites` file. **Only you can fetch your own sites**
+
+- Redirect to Dashboard when User is Authenticated ✅
+
+  - There is a sample snippet on [Vercel's website](https://vercel.com/blog/simple-auth-with-magic-link-and-nextjs) called magic-link:
+
+  ```javascript
+  <script
+    dangerouslySetInnerHTML={{
+      __html: `
+          if (document.cookie && document.cookie.includes('authed')) {
+            window.location.href = "/dashboard"
+          }
+        `
+    }}
+  />
+  ```
+
+  - The above code should be placed inside of `/pages/index.js`
+
+- Setting The Cookie ✅
+
+  - the associated cookie `fast-feedback-auth` should be set inside of `/lib/auth`.
+  - For setting a cookie, you can install and use the library `js-cookie`. Then do:
+
+  ```javascript
+  cookie.set('fast-feedback-auth', true, {
+    expires: 1
+  });
+  ```
+
+  - For removing the cookie, simply:
+
+  ```javascript
+  cookie.remove('fast-feedback-auth');
+  ```
+
+- Incremental Static Regeneration
+
+  - Essentially allows us to rebuild our app in the background. The cached version of our static site will be updated with the newest version.
+  - This is particularly useful for a scenario of Firebase's servers going down, for example. You will never show a broken page!
+  - ISR is accomplished by adding the following prop inside of the returned object from `getStaticProps()`: `unstable_revalidate: 1` the "1" means "rebuild every 1 second"
+  - We are guaranteed to have a page that is statically served and our users will not never see content
+
 ### <a id='notes'></a>Course Notes 🧾
 
 - The stack for this project will be:
@@ -180,6 +228,7 @@
   - Mutate data using API routes
 
 - Data Fetching with SWR
+
   - SWR is a package that offers React hooks for remote data fetching
   - Components will get a stream of data updates constantly and automatically. And the UI will be always fast and reactive.
   - One nice things is that the information updates in the background, so, if I navigate off the page, that information will stay up to date.
