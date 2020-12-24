@@ -1,11 +1,11 @@
-import { useState, useRef } from 'react';
-import { Box, Button, FormControl, FormLabel, Input } from '@chakra-ui/core';
+import { useRef, useState } from 'react';
 import { useRouter } from 'next/router';
+import { Box, FormControl, FormLabel, Input, Button } from '@chakra-ui/core';
 
 import Feedback from '@/components/Feedback';
 import { useAuth } from '@/lib/auth';
-import { getAllFeedback, getAllSites } from '@/lib/db-admin';
 import { createFeedback } from '@/lib/db';
+import { getAllFeedback, getAllSites } from '@/lib/db-admin';
 
 export async function getStaticProps(context) {
   const siteId = context.params.siteId;
@@ -15,7 +15,7 @@ export async function getStaticProps(context) {
     props: {
       initialFeedback: feedback
     },
-    revalidate: 1
+    unstable_revalidate: 1
   };
 }
 
@@ -33,7 +33,7 @@ export async function getStaticPaths() {
   };
 }
 
-const SiteFeedback = ({ initialFeedback }) => {
+const FeedbackPage = ({ initialFeedback }) => {
   const auth = useAuth();
   const router = useRouter();
   const inputEl = useRef(null);
@@ -44,7 +44,7 @@ const SiteFeedback = ({ initialFeedback }) => {
 
     const newFeedback = {
       author: auth.user.name,
-      autorId: auth.user.uid,
+      authorId: auth.user.uid,
       siteId: router.query.siteId,
       text: inputEl.current.value,
       createdAt: new Date().toISOString(),
@@ -64,15 +64,17 @@ const SiteFeedback = ({ initialFeedback }) => {
       maxWidth="700px"
       margin="0 auto"
     >
-      <Box as="form" onSubmit={onSubmit}>
-        <FormControl my={8}>
-          <FormLabel htmlFor="comment">Comment</FormLabel>
-          <Input ref={inputEl} type="comment" id="comment" />
-          <Button type="submit" fontWeight="medium" mt={2}>
-            Add Comment
-          </Button>
-        </FormControl>
-      </Box>
+      {auth.user && (
+        <Box as="form" onSubmit={onSubmit}>
+          <FormControl my={8}>
+            <FormLabel htmlFor="comment">Comment</FormLabel>
+            <Input ref={inputEl} id="comment" placeholder="Leave a comment" />
+            <Button mt={4} type="submit" fontWeight="medium">
+              Add Comment
+            </Button>
+          </FormControl>
+        </Box>
+      )}
       {allFeedback.map((feedback) => (
         <Feedback key={feedback.id} {...feedback} />
       ))}
@@ -80,4 +82,4 @@ const SiteFeedback = ({ initialFeedback }) => {
   );
 };
 
-export default SiteFeedback;
+export default FeedbackPage;

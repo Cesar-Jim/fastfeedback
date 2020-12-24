@@ -1,4 +1,3 @@
-import { useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { mutate } from 'swr';
 import {
@@ -13,18 +12,16 @@ import {
   FormLabel,
   Button,
   Input,
-  useDisclosure,
-  useToast
+  useToast,
+  useDisclosure
 } from '@chakra-ui/core';
 
 import { createSite } from '@/lib/db';
 import { useAuth } from '@/lib/auth';
-import fetcher from '@/utils/fetcher';
 
 const AddSiteModal = ({ children }) => {
-  const initialRef = useRef();
-  const auth = useAuth();
   const toast = useToast();
+  const auth = useAuth();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { handleSubmit, register } = useForm();
 
@@ -44,16 +41,13 @@ const AddSiteModal = ({ children }) => {
       duration: 5000,
       isClosable: true
     });
-
     mutate(
       ['/api/sites', auth.user.token],
       async (data) => {
-        console.log(data);
         return { sites: [...data.sites, newSite] };
       },
       false
     );
-
     onClose();
   };
 
@@ -72,7 +66,7 @@ const AddSiteModal = ({ children }) => {
       >
         {children}
       </Button>
-      <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
+      <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent as="form" onSubmit={handleSubmit(onCreateSite)}>
           <ModalHeader fontWeight="bold">Add Site</ModalHeader>
@@ -81,7 +75,6 @@ const AddSiteModal = ({ children }) => {
             <FormControl>
               <FormLabel>Name</FormLabel>
               <Input
-                ref={initialRef}
                 placeholder="My site"
                 name="name"
                 ref={register({
