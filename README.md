@@ -175,12 +175,41 @@
   cookie.remove('fast-feedback-auth');
   ```
 
-- Incremental Static Regeneration
+- Incremental Static Regeneration ⚠️
 
   - Essentially allows us to rebuild our app in the background. The cached version of our static site will be updated with the newest version.
   - This is particularly useful for a scenario of Firebase's servers going down, for example. You will never show a broken page!
   - ISR is accomplished by adding the following prop inside of the returned object from `getStaticProps()`: `unstable_revalidate: 1` the "1" means "rebuild every 1 second"
   - We are guaranteed to have a page that is statically served and our users will not never see content
+  - **More understanding and practice on this topic is needed**
+
+- [Checkly](https://app.checklyhq.com/) ✅
+
+  - What is Checkly?
+    - Monitor the status and performance of your API endpoints & vital site transactions from a single, simple dashboard.
+    - An active reliability platform that brings together the best of end-to-end testing and active monitoring.
+    - In essence, a browser check is a Node.js script that starts up a Chrome browser, loads a web page and interacts with that web page. The script validates assumptions you have about that web page, for instance:
+      - Is my shopping cart visible?
+      - Can users add products to the shopping cart?
+      - Can users log in to my app?
+
+- Logging with [LogFlare](https://logflare.app) ✅
+
+  - Vercel has a concept of `log drains` and basically all of these logs that filter in can be sent-off to other 3rd party loggers
+  - Why do we need loggers?
+    - Catch errors
+    - See live-streaming logs
+    - Get real-time logs
+    - Store and query logs
+    - Go back in the past to see when something broke
+    - Set some kind of alerting for when things break
+  - **Logflare** has pretty good integration with **Vercel** and has a very good free tier.
+  - Check Vercel's market place and look for integrations with Logflare
+
+- [pino-logflare](https://github.com/Logflare/pino-logflare)
+  - Build on top of Logflare and is a module used to forward messages to your Logflare account.
+  - To install it just do: `$ npm install pino-logflare`
+  - And check the [pino-logger integration with Vercel guide](https://github.com/Logflare/pino-logflare/blob/master/docs/VERCEL.md) to understand how to handle log events for the client and server sides
 
 ### <a id='notes'></a>Course Notes 🧾
 
