@@ -206,10 +206,14 @@
   - **Logflare** has pretty good integration with **Vercel** and has a very good free tier.
   - Check Vercel's market place and look for integrations with Logflare
 
-- [pino-logflare](https://github.com/Logflare/pino-logflare)
+- [pino-logflare](https://github.com/Logflare/pino-logflare) ✅
+
   - Build on top of Logflare and is a module used to forward messages to your Logflare account.
   - To install it just do: `$ npm install pino-logflare`
   - And check the [pino-logger integration with Vercel guide](https://github.com/Logflare/pino-logflare/blob/master/docs/VERCEL.md) to understand how to handle log events for the client and server sides
+
+- [Stripe](https://firebase.google.com/products/extensions/firestore-stripe-subscriptions)- Firebase Extension
+  - Find a nice setup walkthrough [here](https://github.com/jaredpalmer/minimum-viable-saas/blob/master/README_FB_STRIPE_POSTINSTALL.md)
 
 ### <a id='notes'></a>Course Notes 🧾
 
